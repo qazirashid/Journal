@@ -63,3 +63,19 @@ For processes with multiple threads, a thread can do the I/O and sleep in wait, 
 
 Javascript interpretters do a similar thing. They act like multi-threaded processes. If one thread is waiting for I/O, we specify a function that it will call when the I/O has finished.
 But other parts of javascript are in execution when this particular io thread is waiting.
+
+2015-08-28 12:19 Although Asynchrnous javascript calls are nice but I don't understand the underlying mechanism.
+I think goroutines are more understandble for doing this type of programming.
+if we expect a function to take time executing, we launch it in a new goroutine and be done with it.
+Golang will start a new thread and will execute the function in that thread.
+Thus its easier to understand even in syntax because a function preceded by a keyword 'go' is all we need to specify.
+
+normalfunction(args);   // execution blocks untill the function returns
+
+go normalfunction(args); // A new thread is created for this function and execution of current thread does not block.
+
+2015-08-28 12:20 help
+
+2015-08-28 12:35 Next explore @websockets for duplex communication between @browser and @server app.
+I need a reliable javascript websockets library on the client side. 
+On the server side I think golang will have all the support for websockets.
