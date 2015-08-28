@@ -1,1 +1,65 @@
 2015-08-28 09:49 : copying all configuration files into git repository, so that I can switch computers and my tools get configured quickly and easily.
+
+2015-08-28 10:27 The first thing I did was to put my configuration files into a git repository.
+The problem I face is that I oftem move between computers and I get frustrated when the tool does not
+do what I expect it to do.
+So one method that I could think of was to move my configuration files with me. So I will be putting all config files
+into this repository. Then I'll update a small bash script that will pull the latest version of the config files from github
+and copy those the the locations where the tools will expect them.
+If I want to make any changes to the configuration files my work flow will be following.
+
+1- Go to the folder with this git repository
+2- update the relevant configuration file
+3- push the changes to git hub ( use 'pushconfig.sh')
+4- update the config on the local computer ( run 'configtools.sh')
+
+2015-08-28 10:54 Today I started exploring more about @Atom @text @editor.
+I found @electron framework based on node.js.
+@electron @allows us to write @desktop applications using @javascript.
+@electron will compile the @javascript and build an native application with that code.
+What really interested me is that @Atom @text @editor is built using @electron. and it is a great
+text editor. What's really intersting is that a lot of contributors can easily write @plugin for it.
+And it all can be done using javascript means that all the javascript libraries built over time
+become useful. Alhtough other languages have excellent libraries and one can make complex applications with them
+what is interesting in case of electron is that it renders the desktop application using a @web @browser with integrated
+javascript engine. Thaus all the javascirpt that is on the web can be potentially pulled into the application and executed
+as part of it.
+
+This allows us to build front end of our web app in javascript and yet keep the possibility open that at some time we can
+turn this front end to a desktop application.
+
+2015-08-28 11:32 electron basically provides a native run time for javascript.
+It also exposes native API to javascript, thus javascirpt libraries can call
+other libraries.
+@electron uses a V8 @javascript engine and @chrome redering engine to give us a tiny webbrwoser that can act as one desktop application.
+
+While exploring electron I also found 'grunt' build tool for javascript. Its very much like 'make' for javascript.
+It performs repetie tasks of formating, cleaning, minifying and building packages for javascirpt.
+
+I also found 'Docker'. docker is basically provides an implementation for deploying software on cloud platforms in the form of docker containers.
+docker containers are very much like virtual machine but they are light wait, do not require installation of an operating system.
+The apps in the container run in a protected environment with all the dependencies available to them in their own conatiners.
+Thus two apps that use different versions of the same dependency can run in two different containers and their dependencies do not cause conflicts.
+
+2015-08-28 12:03 The next thing I realized that in order to build good software some common @design @patterns should be understood.
+These patterns are in general not dependant on the language being used but some languages are more
+convenient in implementing patters.
+I ran a search for books on design patters and found some suggestions on @quora.
+Here is one interesting resource to look for more information.
+
+http://aosabook.org/en/index.html
+
+2015-08-28 12:13 I just read about the callback in javascript.
+JavaScript uses asnychronous events. We can define functions that execute when a certain event occurs.
+The time at which the call back function gets called is not deterministic and not determined by the line
+of code in which it appears in the soruce code.
+It is very much like interrupts. When an interrupt occurs a interrupt routine (dubbed as callback function in javascirpt) gets called and when callback function finishes
+the execution of program goes back to the original point where the execution was interrupted.
+
+Callbacks do aysnchronous input/output. In linux kernel when a process is doing input and output, if the related buffers are not ready, the kernel put the process in sleep
+and starts executing other processes. When the kernel notices that an I/O operation has finished and a process is sleeping waiting for it, the kernel wakes up the process
+and process resumes execution. This effectively blocks the process. If the process has only one thread than it will not respond untill its I/O request is completed.
+For processes with multiple threads, a thread can do the I/O and sleep in wait, but other threads of process can continue executing as normal.
+
+Javascript interpretters do a similar thing. They act like multi-threaded processes. If one thread is waiting for I/O, we specify a function that it will call when the I/O has finished.
+But other parts of javascript are in execution when this particular io thread is waiting.
