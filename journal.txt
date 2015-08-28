@@ -1,0 +1,1 @@
+2015-08-28 09:49 : copying all configuration files into git repository, so that I can switch computers and my tools get configured quickly and easily.
