@@ -77,5 +77,40 @@ go normalfunction(args); // A new thread is created for this function and execut
 2015-08-28 12:20 help
 
 2015-08-28 12:35 Next explore @websockets for duplex communication between @browser and @server app.
-I need a reliable javascript websockets library on the client side. 
+I need a reliable javascript websockets library on the client side.
 On the server side I think golang will have all the support for websockets.
+
+2015-08-29 13:17 From now on, I'll learn everyday a few things about
+--vim
+--golang
+
+2015-08-29 18:26 I am just wondering in the land of programming languages.
+I just found some criticisms of golang here:
+
+http://yager.io/programming/go.html
+
+This made me realise that @golang might be a great language for certain
+needs but it has its limitations.
+I have already learnt some @haskell and found that I am not ready for it and
+it does not allow the flexibility that I might need especially when it comesto mutating variable values.
+So I learnt a little bit of @rust programming language. I am not sure if that is a great language but I have heard that it is systems programming lanugage which is what I am interested in.
+It not only provides a static type system and polymorphism like haskell but
+it allows us to easily make objects mutable.
+So I just learnt a  few basics.
+I got the installer.sh using 'curl' and then 'sh installer'.
+it installed 'rustc' which is the compiler for rust.
+it also installed 'cargo' which is package manager and build system for
+rust.
+I wrote hello world program in rust.
+
+2015-08-29 18:29 After writeng the hello world program, I used 'cargo' to build and execute the programs. cargo is the build tool for rust programming 
+language. It uses 'Cargo.toml' file to store all configuration information.
+It manages dependencies for the project. 
+The thing I liked about carg is that it did type checking on 'Cargo.toml'
+file itself and caught many errors before it allowed me to build the hello
+world program. I hate Javascript because it just silently fails and then 
+goes on as if nothing happened. This comment is not just about static type
+checking but also that type checking is performed on configuration files.
+I have not seen a build system that performs type checking on the 
+configuration files. 
+

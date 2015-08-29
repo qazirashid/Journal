@@ -116,3 +116,5 @@ export GOPATH=~/golang
 export GOBIN=~/golang/bin
 export PATH=$PATH:~/golang/bin
 export PATH=$PATH:/usr/lib/dart/bin
+export CLICOLOR=1
+export LSCOLORS=GxFxCxDxBxegedabagaced
