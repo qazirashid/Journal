@@ -103,14 +103,47 @@ it also installed 'cargo' which is package manager and build system for
 rust.
 I wrote hello world program in rust.
 
-2015-08-29 18:29 After writeng the hello world program, I used 'cargo' to build and execute the programs. cargo is the build tool for rust programming 
+2015-08-29 18:29 After writeng the hello world program, I used 'cargo' to build and execute the programs. cargo is the build tool for rust programming
 language. It uses 'Cargo.toml' file to store all configuration information.
-It manages dependencies for the project. 
+It manages dependencies for the project.
 The thing I liked about carg is that it did type checking on 'Cargo.toml'
 file itself and caught many errors before it allowed me to build the hello
-world program. I hate Javascript because it just silently fails and then 
+world program. I hate Javascript because it just silently fails and then
 goes on as if nothing happened. This comment is not just about static type
 checking but also that type checking is performed on configuration files.
-I have not seen a build system that performs type checking on the 
-configuration files. 
+I have not seen a build system that performs type checking on the
+configuration files.
 
+2015-08-29 23:59 This is the second time I installed a @vim @plugin using @vim-plug.
+The process if fairly simple.
+We add to .@vimrc the following line
+
+Plug 'dir/plugname.vim'
+
+Then we source .vimrc or restart vim.
+After that we issue the following command
+:PlugInstall
+@vim-plug will download the plugin and will install it.
+
+Also remember to put '@filetype on' directive at the end of .vimrc when all
+plugins have been loaded.
+
+2015-08-30 00:01 : installed the rust.vim for rust language.
+
+2015-08-30 00:07 : created a symlink of .vimrc in journal to home directory.
+.vimrc in home directory is just a link to this .vimrc.
+
+2015-08-30 01:40 I just learnt that @vimplug  uses @github to download plugins for @vim.
+ If we want a plugin that is avaialable on vim on url
+ 'http://github.com/authorsgit/pluginproject/plugin/plugin.vim'
+ then all we need to specify is a directive in .vimrc
+
+ Plug 'authorsgit/pluginproject'
+
+ After that if we source .vimrc
+ or repopen vim and issue the following command
+
+ :PlugInstall
+
+ @vimplug will figureout the whole url and wil download the plugin
+ will put it in an approperiate directory.
