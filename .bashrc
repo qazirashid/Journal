@@ -118,3 +118,4 @@ export PATH=$PATH:~/golang/bin
 export PATH=$PATH:/usr/lib/dart/bin
 export CLICOLOR=1
 export LSCOLORS=GxFxCxDxBxegedabagaced
+export PATH=$PATH:/usr/local/Cellar/node/0.12.7/bin

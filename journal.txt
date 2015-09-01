@@ -147,3 +147,80 @@ plugins have been loaded.
 
  @vimplug will figureout the whole url and wil download the plugin
  will put it in an approperiate directory.
+
+2015-08-30 02:13 I just discovered a problem with rustlang shoadowing.
+rustlang allows us to
+shadow variable bindings.
+My program declares astring variable 'str'.
+Then the program goes into loop.
+In the loop the program reads a line from stdin.
+then the program does ' let str ; u32 = str.trim().parse();'
+Now this line shadows str which originally had type 'String' and now
+str has type 'u32'.
+The loop finises and then program tries to read stdin into str.
+The compiler does not issue any warnings or eorros but a run time error
+occurs which terminates the program.
+I think compiler should have caught the type mismatch. It made me think
+about the safety of rustlang.
+
+2015-08-30 18:37 I found wercker.
+@werker is similar to a @build system that integrates with source control
+system such as @github and @bitbucket. Every time a commit is pushed to
+github, wercker gets a notification that source has changed. Wercker pulls
+the new version of source and executes a pipeline of commands for @building,
+@testing and @deploying the build (if build is sucessful) on the @target.
+Thus the developer can focus on the app and automate the build and deploy
+process. The developer only needs to intervene if a build fails and bugs
+need to be removed before next successful build.
+
+2015-09-01 20:19 I have been @exploring front end @web design.
+ This is growing very rapidly. I have already read about twitter @bootstrp.
+ The new thing I found was Google's @polymer which allows us to use @HTML5 
+ web components even in those browsers which currently do not have support for 
+ web components. It achieves this by using @polyfills which are @javacript libraries
+ that provides necessary functionality for web components if the browser does not 
+ provide it. If the browser has this functionality, then polymer will let the browser handle
+ web components.
+
+ Web components allow html imports, custom html elements, templates and shadow DOM.
+ I am not fully aware of there power but I think they make web development much simpler 
+ and developer can be much more productive. 
+
+ Then I watched a video in @polymercasts on youtube. I like this series and I'll be following it.
+https://www.youtube.com/results?search_query=polymercasts
+
+ In this video the authos introducd several interesting technologies. These are
+ 1- Google dev editor
+ 2- A camera set up on the tablet with tablets being screen captured. The screen capture is then mixed
+ with the camera video to build a composite video that is very good for classroom style teaching. 
+ I found this relevent to @kawish.
+ 3- The he talked about Yeoman. @Yeoman is a scafollding system that can rapidly build a scaffold for 
+ you web application. It support polymer and many others, for example angularjs.
+
+ I looked at the workflow of @Yeoman and found that it integrates nicely with
+ package and dependency 
+ managers like @npm and @bower and then build, test and deploy systems like @grunt and @gulp.
+
+http://yeoman.io/learning/
+
+so the work flow is 3 steps
+1- Build a scaffolding using Yoeman:  
+
+yo polymer
+
+will build a scaffolding for polymer project.
+
+The download dependencies and packages
+
+bower search
+bower install 
+
+will do that.
+Finally when your app is ready 
+
+grunt serve
+grunt test
+grunt
+
+will do the rest.
+All done using 6 commands on command line. Impressive.
