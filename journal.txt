@@ -341,17 +341,30 @@ and continue this process untill you have read all characters in the string.
 The final result will the the number in the register.
 
 2015-09-05 03:11 In an HTTP request if we include a header 'If-Modified-Since:  <date and time> '
-Then server will check if the resource we are requesting has changed after the 
-date we have specified in the request. If it has not changed, the server will send 
+Then server will check if the resource we are requesting has changed after the
+date we have specified in the request. If it has not changed, the server will send
 a response with status 304 like this
 
 HTTP/1.1 304 Not Modified
 
 instead of sending the resource in the body (the body will be empty). How can it be useful?
 
-it is useful because if a client had acquired a resource at a given date 
-and wants to update the resource, all it needs to do is send an HTTP GET request with 
+it is useful because if a client had acquired a resource at a given date
+and wants to update the resource, all it needs to do is send an HTTP GET request with
 "If-Modified-Since: <date>" header. If the server has a newer version, it will send to
 the requesting client, otherwise it will not send anything and client will know that
 its local cached copy is up-to-date. It saves bandwidth by not sending resources that
 have been cached already.
+
+2015-09-05 03:18 For more up-to-date iformation about http see
+http://www.w3.org/Protocols/
+Especially RFC 723x series of specifications by IETF.
+
+2015-09-05 03:29 Time stamp @standard is
+@ISO8601
+
+in addition for HTTP
+@RFC723x
+@RFC2616
+
+This can be useful for @CENG application.
