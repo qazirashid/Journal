@@ -368,3 +368,10 @@ in addition for HTTP
 @RFC2616
 
 This can be useful for @CENG application.
+
+2015-09-05 13:41 I just noticed that my commits to github were going
+with different user names. It is not a problem for me right now
+but I decided to investigate and found that I had not been configuring
+git before first use. So now that I have configured git properly 
+on my home computer, github show my commit under my github account name.
+let's see.
