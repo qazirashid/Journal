@@ -175,16 +175,16 @@ need to be removed before next successful build.
 
 2015-09-01 20:19 I have been @exploring front end @web design.
  This is growing very rapidly. I have already read about twitter @bootstrp.
- The new thing I found was Google's @polymer which allows us to use @HTML5 
- web components even in those browsers which currently do not have support for 
+ The new thing I found was Google's @polymer which allows us to use @HTML5
+ web components even in those browsers which currently do not have support for
  web components. It achieves this by using @polyfills which are @javacript libraries
- that provides necessary functionality for web components if the browser does not 
+ that provides necessary functionality for web components if the browser does not
  provide it. If the browser has this functionality, then polymer will let the browser handle
  web components.
 
  Web components allow html imports, custom html elements, templates and shadow DOM.
- I am not fully aware of there power but I think they make web development much simpler 
- and developer can be much more productive. 
+ I am not fully aware of there power but I think they make web development much simpler
+ and developer can be much more productive.
 
  Then I watched a video in @polymercasts on youtube. I like this series and I'll be following it.
 https://www.youtube.com/results?search_query=polymercasts
@@ -192,19 +192,19 @@ https://www.youtube.com/results?search_query=polymercasts
  In this video the authos introducd several interesting technologies. These are
  1- Google dev editor
  2- A camera set up on the tablet with tablets being screen captured. The screen capture is then mixed
- with the camera video to build a composite video that is very good for classroom style teaching. 
+ with the camera video to build a composite video that is very good for classroom style teaching.
  I found this relevent to @kawish.
- 3- The he talked about Yeoman. @Yeoman is a scafollding system that can rapidly build a scaffold for 
+ 3- The he talked about Yeoman. @Yeoman is a scafollding system that can rapidly build a scaffold for
  you web application. It support polymer and many others, for example angularjs.
 
  I looked at the workflow of @Yeoman and found that it integrates nicely with
- package and dependency 
+ package and dependency
  managers like @npm and @bower and then build, test and deploy systems like @grunt and @gulp.
 
 http://yeoman.io/learning/
 
 so the work flow is 3 steps
-1- Build a scaffolding using Yoeman:  
+1- Build a scaffolding using Yoeman:
 
 yo polymer
 
@@ -213,10 +213,10 @@ will build a scaffolding for polymer project.
 The download dependencies and packages
 
 bower search
-bower install 
+bower install
 
 will do that.
-Finally when your app is ready 
+Finally when your app is ready
 
 grunt serve
 grunt test
@@ -224,3 +224,118 @@ grunt
 
 will do the rest.
 All done using 6 commands on command line. Impressive.
+
+2015-09-05 02:07 This morning, I did some plotting with @matlab/octave and explored @surf
+@plots for ploting surfaces. The task was to plot a cube whose colors can be set
+as desired, say rubic cube with large number of rows and columns.
+I generated a @meshgrid of a plane and then plotted 6 surfaces of planes that made six
+sides of the cube. I discovered how @colormap([vec]) could be used with plots to
+to control color of surfaces. I did not start with high expectations from octave/
+@matlab but in the end their plotting capabilities were sufficient.
+Moreover, I became aware that under the hood they use @OpenGL. So I don't need to
+use openGL at very low level. why should I not use it at high level of octave when it
+is available.
+
+2015-09-05 02:24 After returning from office I decided to study @HTTP protocol.
+I thought that it is ubiqutous protocol in computer @networks so
+I should get more understanding of it instead of just relying on high
+level tools.
+I found a C program for sending a HTTP message to a server. I started
+a simple HTTP server that I had installed using npm with nodejs.
+(Note that nodejs enables us to write native code using javascript thus we
+can write command line programs in javascript).
+anyway, running the server was easy, it ran on port 3000.
+I then edited the C program and noticed the program flow:
+ 1- the hostname of server is a string, we send this string to DNS server and
+ in return we get the ip address of the server. The ip address is stored in a
+ predefined structure in C library.
+ 2- We prepare a HTTP message string. This string must conform to the HTTP
+ standard. the carriage retruns CR '\r' and Line feeds LF '
+' must be inserted
+ very carefully as required by the standard.
+ 3- We open a new socket to remote server by using the IP address structure and
+ specifying the port number at which the server is listening for incoming connections.
+ This is a system call to kernel. The kernel prepares all the data structures to set up this socket and returns a
+ file descriptor for the socket.
+ We can then read/write this socket as a file.
+ 3- We connect the socket. This is again a system call. The kernel attempts to set up a TCP
+ connection with the server. If the connection is successful, we can start communicating with the server.
+ 4- To communicate with the server, we write strings (HTTP requests) to the socket as if it was a file.
+ 5- The server on its end can read the socket and finds the strings that were written by us.
+ 6- The server parses the strings as HTTP messages. If it can successfully understand the message then
+ it prepares a response message and writes it to the socket.
+ 7- Our program, after having written the HTTP request to the socket, issues a read() system call. This
+ call cuases the process to sleep untill there is data available for reading. So our process sleeps while
+ the server is preparing a response.
+ 8- When server has written a response to the socket on its own end and the data arrives at our end,
+ then kernel wakes up our process and hands in the data that is returned as a response to the system
+ call.
+ 9- Our process can now parse the response as an HTTP response.
+
+ The things to note are that if you want to write HTTP clients or servers, you must study the HTTP
+ specifications in detail. It is the only way you can know exactly how to construct HTTP message strings
+ as a client and exactly how to respond to HTTP queries as a server.
+
+2015-09-05 02:36 For HTTP I found a good introductory @resource here.
+http://www.jmarshall.com/easy/http/
+
+For indpeth understanding of HTTP, one must read RFC @2616 here:
+https://www.ietf.org/rfc/rfc2616.txt
+@curl
+I used 'curl' to issue HTTP requests to the running server.
+I noticed that the server I was using did not adhere to the RFC 2616
+for many use cases. It was a simple server so I didn't worry much but
+some people were saying that this server could be used in production, which
+is something I won't agree to if server does not correctly respond
+to all messages according to the standard.
+
+anyway 'curl' is really useful tool. I learnt how to specify requests using --request
+flag. How to specify HTTP headers using ' -H " testheaderkey: testheadervalue"'.
+I also learnt how to use HTTP proxy using -X option in curl.
+I also learnt how to dump body of HTTP message sent and received by curl by using '-o /dev/null'
+and how to display the headers sent and received by using '-v' flags.
+
+So learning curl gives me even better understanding of HTTP. curl can use other protocols
+and not just HTTP so it is very useful tool.
+Then I explored further and found that curl comes a dynamically linked library
+called 'libcurl' which can be linked with C programs. curl also has a @library for Python
+ and has @bindings for almost all programming languages. Recently someone wrote bindings for
+ golang. Although goland already has 'net/http' standard library so libcurl might not be as
+ crucial but it can be useful.
+
+2015-09-05 02:55 I was wondering how do computers generate string representations of numbers.
+I have used this feature many times in many programming languages but I never
+though how it was done.
+So I wrote a program that takes a number ( could be contents of a register or
+memory location) and then builds a string that represents that number 
+in human readable form. For example '00001001' will be converted to '9'.
+The trick is:
+1- Divide the number by base (say 10) and calculate remainder and quotient.
+2- Use the remainder to as a lookup index into a string of digits '0123456789ABCDEF'.
+and write the char found as the output string. For example if remainder=4, we write 
+'4' to the output string. The output is built in reverse order as compared to normal strings.
+3- Check the quotient, if is zero, stop and declare the output string as final.
+If quotient is not zero, then go to step 1 and repeat.
+
+Then I wrote a shell script that called this program to calculate the number in all bases 
+from 2 to 16.
+It was a good learning experience. I never thought that something that we take for granted 
+can be tricky to calculate if we have never thought about it.
+The reverse problem is also interesting. i.e, given a string of digist, find its computer representation
+as the contents of a register or memory location.
+I think this can be done by reversing the process above.
+
+1- Read the last char of string. Say it is '5'.
+2- We set the content of register = 5 ( how?)
+   The character representation of '0' is 0x30. So if we take '0' as a number
+   and subtract 0x30 from it, we get the registe contents of number 0. 
+  Now ascii representation of '5' is 0x35 so subtracting 0x30 gives us number 5.EASY.
+  just put character in a register and subtract 0x30 from it. the new contents of register will
+  be the number that the character represented.
+
+3- Put this number in accamulator. In the input string, look ahead if there is another numberic char
+to the left of character we have just processed. If yes, read the character, get its number representation
+in temp. 
+Then accamulator = accamulator * 10 + temp 
+and continue this process untill you have read all characters in the string.
+The final result will the the number in the register.
