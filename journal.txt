@@ -307,19 +307,19 @@ called 'libcurl' which can be linked with C programs. curl also has a @library f
 I have used this feature many times in many programming languages but I never
 though how it was done.
 So I wrote a program that takes a number ( could be contents of a register or
-memory location) and then builds a string that represents that number 
+memory location) and then builds a string that represents that number
 in human readable form. For example '00001001' will be converted to '9'.
 The trick is:
 1- Divide the number by base (say 10) and calculate remainder and quotient.
 2- Use the remainder to as a lookup index into a string of digits '0123456789ABCDEF'.
-and write the char found as the output string. For example if remainder=4, we write 
+and write the char found as the output string. For example if remainder=4, we write
 '4' to the output string. The output is built in reverse order as compared to normal strings.
 3- Check the quotient, if is zero, stop and declare the output string as final.
 If quotient is not zero, then go to step 1 and repeat.
 
-Then I wrote a shell script that called this program to calculate the number in all bases 
+Then I wrote a shell script that called this program to calculate the number in all bases
 from 2 to 16.
-It was a good learning experience. I never thought that something that we take for granted 
+It was a good learning experience. I never thought that something that we take for granted
 can be tricky to calculate if we have never thought about it.
 The reverse problem is also interesting. i.e, given a string of digist, find its computer representation
 as the contents of a register or memory location.
@@ -328,14 +328,30 @@ I think this can be done by reversing the process above.
 1- Read the last char of string. Say it is '5'.
 2- We set the content of register = 5 ( how?)
    The character representation of '0' is 0x30. So if we take '0' as a number
-   and subtract 0x30 from it, we get the registe contents of number 0. 
+   and subtract 0x30 from it, we get the registe contents of number 0.
   Now ascii representation of '5' is 0x35 so subtracting 0x30 gives us number 5.EASY.
   just put character in a register and subtract 0x30 from it. the new contents of register will
   be the number that the character represented.
 
 3- Put this number in accamulator. In the input string, look ahead if there is another numberic char
 to the left of character we have just processed. If yes, read the character, get its number representation
-in temp. 
-Then accamulator = accamulator * 10 + temp 
+in temp.
+Then accamulator = accamulator * 10 + temp
 and continue this process untill you have read all characters in the string.
 The final result will the the number in the register.
+
+2015-09-05 03:11 In an HTTP request if we include a header 'If-Modified-Since:  <date and time> '
+Then server will check if the resource we are requesting has changed after the 
+date we have specified in the request. If it has not changed, the server will send 
+a response with status 304 like this
+
+HTTP/1.1 304 Not Modified
+
+instead of sending the resource in the body (the body will be empty). How can it be useful?
+
+it is useful because if a client had acquired a resource at a given date 
+and wants to update the resource, all it needs to do is send an HTTP GET request with 
+"If-Modified-Since: <date>" header. If the server has a newer version, it will send to
+the requesting client, otherwise it will not send anything and client will know that
+its local cached copy is up-to-date. It saves bandwidth by not sending resources that
+have been cached already.
