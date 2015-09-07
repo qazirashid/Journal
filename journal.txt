@@ -375,3 +375,10 @@ but I decided to investigate and found that I had not been configuring
 git before first use. So now that I have configured git properly 
 on my home computer, github show my commit under my github account name.
 let's see.
+
+2015-09-02 09:47 Just started to explore React.js.
+React gives functionality to update web pages whose information is changing continusouly.
+It updates parts of the page/document that have changed as it gets new updates from server or from local events.
+Its rather easy to use and all you need is to import two javascripts in the page.
+react can also use its own systx JXS but can work with javascript syntax as well.
+React can be useful for building apss, such as live event updates, chat and monitoring.
