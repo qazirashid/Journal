@@ -5,5 +5,5 @@
 
 module Elem where
 
-elem item collection = foldl (\acc x -> (||) acc (item == x)) False collection 
+myelem item collection = foldl (\acc x -> (||) acc (item == x)) False collection 
 

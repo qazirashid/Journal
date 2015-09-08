@@ -1,0 +1,13 @@
+-- intersperse takes a list of [a] and an element 'x' of type 'a'
+-- it then puts x between each two elements of list.
+-- 
+-- myintersperse :: a -> [a] -> [a]
+-- This is my attempt to write this function without consulting any
+-- help from any source. I just know the input and output of function
+--
+-- I think the best solution will be to fold the list from right.
+-- let 'i' denote the intersperse element.
+-- We start with [] list. We look at the next elment.
+-- we cons the next elment to accumulator and then cons i to it
+--
+myintersperse i list = drop 1 . foldr (\next acc -> i:next:acc) [] $ list 

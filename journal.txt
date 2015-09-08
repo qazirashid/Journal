@@ -372,6 +372,23 @@ This can be useful for @CENG application.
 2015-09-05 13:41 I just noticed that my commits to github were going
 with different user names. It is not a problem for me right now
 but I decided to investigate and found that I had not been configuring
-git before first use. So now that I have configured git properly 
+git before first use. So now that I have configured git properly
 on my home computer, github show my commit under my github account name.
 let's see.
+
+2015-09-08 21:24 Previous few days have been spent on shopping and getting ready for travel.
+I missed coming back to my computer programming distractions.
+Anyway, that is mostly done now so I can continue.
+
+I watched a video about how netflix used FreeBsd and NginX to build its own CDN.
+There were several interesting points with respect to development.
+The speaker noted that most companies fork a stable version of software and then
+build on top of it in isolation from the community. This approach has several disadvantages.
+First is that it is not true that stable versions will have no bugs at all.
+Secondly you will fork a version on which original authors and contributors have
+stopped working, so you cannot expect them to be any useful for your project.
+Thirdly you get isolated from the community and cannot build on collective wisdom
+and contribution. 
+So the authors recommended approach was to contribute to the development version and
+agressively push your commits to enhance the product. You benefit from the community and
+you give back at the same time.

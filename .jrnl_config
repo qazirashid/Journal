@@ -8,7 +8,7 @@
   "timeformat": "%Y-%m-%d %H:%M", 
   "highlight": true, 
   "journals": {
-    "default": "~/work/journal/journal.txt", 
-    "work": "~/work/journal/journal.txt"
+    "default": "~/work/journal/sep15.txt", 
+    "work": "~/work/journal/sep15.txt"
   }
 }

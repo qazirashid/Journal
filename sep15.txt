@@ -1,0 +1,66 @@
+2015-09-08 21:52 I decided to again watch @Git talk by @Scott @Chacon on youtube.
+https://www.youtube.com/watch?v=ZDR433b0HJY
+
+I originally watched this talk almost 4 years ago when I was just beginning to understand Unix
+systems and @version control. At that time git was something totally exotic thing and I missed
+most of the talks points. Now after having used @git for many years for basic version
+control, I think it is time to go back and see what git is capable of and how to become a git pro.
+
+Scott has made availabe his @book 'Pro Git' for free.
+https://progit.org
+
+OK. So the first thing thats different in Git from most of other version control softwares
+is that it is distributed version control system. It does not maintain a centralized database
+but each user has its own respository which works as a local database. That makes most of
+the transactions between server and client very fast because no network is involved.
+
+One of the principles that Scott mentioned, which I think is very useful in general, is that we
+should keep our data model very simple and then build complex algorithms on top of it.
+I think it is very good idea. Instead of adding complexity to the data representation, we can
+keep data model simple and add complexity to the algorithms that use that data and produce outputs
+useful for different purposes.
+
+gits data model is therefor much simpler (although not trivial, its complex enought to be the
+just right kind of abstraction that is needed for version control).
+git maintains data as files in a database where the files are accessed using hash keys.
+The hash is computed by croptographic algorithms on the content of the file. Thus a file and
+its renamed version produce the same hash.
+When git adds a new file to version control, it runs a croptographic algorithm on the file and
+computes its hash value. It returns this hash string to the user and logs it in git log.
+Now whenever that file will be needed, git will read it from the database by using the hash value
+as a key.
+When multiple files are added to version control under git, git will first hash each file
+individually. It will then build a new data structure very much like the directory entry in a
+filesystem with an entry for each file being added. This entry will contain the name of the file
+and its hash value. This directory entry is also hashed and stored in the database.
+The hash value of this entry then serves as a pointer in a directory tree. Other directory
+enteries can refer to this entry by listing it as a file in their file listings.
+git will compute the hash on the directory entry, will print it for the user and will put it
+in git log.
+
+2015-09-08 22:01 'git checkout -b branchname'
+will swith to 'branchname' as the working branch. The working directory will now
+contain the files and directories that are in that particular branch.
+Thus to work on different branches we need not make separate directories and can
+work in the same project directories and yet swith branches as we might wish.
+
+Scott created a @rails app using one command. This command creasted all the @sacaffolding
+for the app, some basic html, css and @javascript was also created. this command also
+ran a web server which started serving in the background. This server also used
+something like 'browser sync' so that it updated the page in browser if it changed in the
+serve directory. When we switch branches, git replaces the current contents of driectory with
+that branch. So a web server that is serving this directory will notice a change and start
+serving new content. This also shows that @git can have uses where we might not have expected it
+to be useful.
+
+2015-09-08 22:09 Scott, in his @git talk, created started a new git repository.
+He then created a branch, say 'A', made some changes to files and committed.
+He then switched to a new branch say 'B' and made some more changes and committed.
+He then switched to master branch and merged branch 'A' with it and then branch 'B' with it.
+@git is very clever at merging branches. If there are no conflicts it will handle the merges
+automatically without any user intervention.
+
+2015-09-08 22:13 @git allows a user to merge branches incrementally.
+That is, you can work on branch 'B' and merge it with 'master'.
+Then go back to branch 'B' and work more on it. The merge it again with 'master'.
+Git will allow you to do that repeatedly.
