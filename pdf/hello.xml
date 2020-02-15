@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<pages>
+<page id="1" bbox="0.000,0.000,595.276,841.890" rotate="0">
+<textbox id="0" bbox="148.712,705.192,197.138,715.155">
+<textline bbox="148.712,705.192,197.138,715.155">
+<text font="FEBVTR+CMR10" bbox="148.712,705.192,156.184,715.155" size="9.963">H</text>
+<text font="FEBVTR+CMR10" bbox="156.184,705.192,160.611,715.155" size="9.963">e</text>
+<text font="FEBVTR+CMR10" bbox="160.611,705.192,163.379,715.155" size="9.963">l</text>
+<text font="FEBVTR+CMR10" bbox="163.379,705.192,166.147,715.155" size="9.963">l</text>
+<text font="FEBVTR+CMR10" bbox="166.147,705.192,171.128,715.155" size="9.963">o</text>
+<text> </text>
+<text font="FEBVTR+CMR10" bbox="174.445,705.192,182.194,715.155" size="9.963">Q</text>
+<text font="FEBVTR+CMR10" bbox="182.194,705.192,187.176,715.155" size="9.963">a</text>
+<text font="FEBVTR+CMR10" bbox="187.176,705.192,191.603,715.155" size="9.963">z</text>
+<text font="FEBVTR+CMR10" bbox="191.603,705.192,194.371,715.155" size="9.963">i</text>
+<text font="FEBVTR+CMR10" bbox="194.371,705.192,197.138,715.155" size="9.963">.</text>
+<text>
+</text>
+</textline>
+</textbox>
+<textbox id="1" bbox="303.133,137.322,308.114,147.285">
+<textline bbox="303.133,137.322,308.114,147.285">
+<text font="FEBVTR+CMR10" bbox="303.133,137.322,308.114,147.285" size="9.963">1</text>
+<text>
+</text>
+</textline>
+</textbox>
+<layout>
+<textgroup bbox="148.712,137.322,308.114,715.155">
+<textbox id="0" bbox="148.712,705.192,197.138,715.155" />
+<textbox id="1" bbox="303.133,137.322,308.114,147.285" />
+</textgroup>
+</layout>
+</page>
+</pages>
