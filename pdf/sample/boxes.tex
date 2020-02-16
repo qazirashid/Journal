@@ -1,0 +1,63 @@
+\documentclass{article}
+\usepackage{luacode,luatexbase}
+\begin{document}
+\begin{luacode*}
+local GLYPH_ID = node.id("glyph")
+
+local number_sp_in_a_pdf_point = 65782
+
+function math.round(num)
+  return math.floor(num * 1000 + 0.5) / 1000
+end
+
+-- width/height/depth of a glyph and the whatsit node
+local wd,ht,dp,w
+
+-- head is a linked list (next/prev entries pointing to the next node)
+function showcharbox(head)
+  while head do
+    if head.id == 0 or head.id == 1 then
+      -- a hbox/vbox
+      showcharbox(head.list)
+    elseif head.id == GLYPH_ID then
+      -- Create a pdf_literal node to draw a box with the dimensions
+      -- of the glyph
+      w = node.new("whatsit","pdf_literal")
+      wd = math.round(head.width  / number_sp_in_a_pdf_point)
+      ht = math.round(head.height / number_sp_in_a_pdf_point)
+      dp = math.round(head.depth  / number_sp_in_a_pdf_point)
+
+      -- draw a dashed line if depth not zero
+      if dp ~= 0 then
+        w.data = string.format("q 0.2 G 0.1 w 0 %g %g %g re S f [0.2] 0 d 0 0 m %g 0 l S Q",-dp,-wd,dp + ht,-wd)
+      else
+        w.data = string.format("q 0.2 G 0.1 w 0 %g %g %g re S f Q",-dp,-wd,dp + ht,-wd)
+      end
+      -- insert this new node after the current glyph and move pointer (head) to
+      -- the new whatsit node
+      w.next = head.next
+      w.prev = head
+      head.next = w
+      head = w
+    end
+    head = head.next
+  end
+  return true
+end
+
+luatexbase.add_to_callback("post_linebreak_filter",showcharbox,"showcharbox")
+\end{luacode*}
+
+\section{Heading1}
+This is some normal text in heading level 1.
+\subsection{Heading2}
+This is some normal text in heading level 2
+\subsubsection{Heading3}
+This is some random text in heading level 3. 
+\subsection{H2}
+Just another example subsection
+\subsubsection{H3}
+An subsubsection are full of random text. 
+
+
+\end{document}
