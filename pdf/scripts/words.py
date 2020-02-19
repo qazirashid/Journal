@@ -39,7 +39,7 @@ df['wx1']  = wx1;
 df['wb'] = wb
 
 dw = df[df['wb']]
-dw.drop(columns=['wb','concat', 'x1'])
+dw= dw.drop(columns=['x1', 'char','concat', 'wb'])
 dw.to_csv(sys.argv[2])
 
 
