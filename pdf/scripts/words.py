@@ -5,8 +5,8 @@ import numpy as np
 import sys
 
 space_th = 1 ; # space threshold
-df = pd.read_csv(sys.argv[1])
-
+dfr = pd.read_csv(sys.argv[1])
+df = dfr.sort_values(by=['y2','x1'], ascending=[False, True])
 xspace = np.roll(df['x1'],-1) - df['x2'];
 yspace = np.roll(df['y1'],-1) - df['y1'];
 # calculate word boundaries

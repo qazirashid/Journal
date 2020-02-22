@@ -31,6 +31,6 @@ for page in pages:
         if font is not None and size is not None and bbox is not None:
           if (charval==","):
             charval=":"
-          print(pageid,",",tboxid,",",textlineid, ",",font,",",size, ",", bbox, ",", charval)
+          print(pageid,",",tboxid,",",textlineid,",",font,",",size,",",bbox,",",charval,sep='')
 
  
