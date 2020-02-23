@@ -33,10 +33,13 @@ df['udrm'] = udrm;
 
 tc = udw+udrm;
 df['tc'] = tc;
-g = (df.groupby('y2').sum())['tc']
+g = df.groupby(['y2','page']).sum();
+g = g.sort_values(by=['page','y2'],ascending=[True,False])
+
+gf= g['tc'];
 
 df.to_csv(sys.argv[2])
-g.to_csv(sys.argv[2] + ".tablecandidates.csv")
+gf.to_csv(sys.argv[2] + ".tablecandidates.csv")
 
 
 
