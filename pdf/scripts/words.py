@@ -8,7 +8,7 @@ space_th = 1 ; # space threshold
 # dfr is the data frame of chars as created by pdfminer
 dfr = pd.read_csv(sys.argv[1])
 #df is the sorted version of dfr. The sorting brings the words in the correct order. 
-df = dfr.sort_values(by=['page','y2','x1'], ascending=[True,False, True])
+df = dfr.sort_values(by=['page','txtbox', 'y2','x1'], ascending=[True,True, False, True])
 # The index of df is still inherited from dfr which as become unusable for later algorithms because of sorting. So we rest index to ensure that frames in df are ordered by a monotonically increasing index.
 
 df.reset_index(drop=True, inplace=True);

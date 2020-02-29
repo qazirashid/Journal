@@ -1,0 +1,6 @@
+#!/usr/bin/env python
+
+import sys
+from PIL import Image, ImageDraw
+# This script expects a properly sized [595x842]
+# It also expects an xml file created by the  
