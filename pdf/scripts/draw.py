@@ -44,9 +44,9 @@ for index,ims in enumerate(images.sequence):
 		for tbox in list(textgroup.iter('textbox')):
 			tbox = tbox.attrib.get("bbox")
 			print("calling rect:", tbox)
-			img = drawRect(img, tbox, Color('red'),3)
+			img = drawRect(img, tbox, Color('red'),1)
 		tgbox=textgroup.attrib.get("bbox")
-		img = drawRect(img,tgbox, Color('blue'),1)
+		#img = drawRect(img,tgbox, Color('blue'),1)
 		print(index,"--",tgbox)
 	img.save(filename=sys.argv[1] + "_" + str(index) +".png") 
 	print(img.size)
